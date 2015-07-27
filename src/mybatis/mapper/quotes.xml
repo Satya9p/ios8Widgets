@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="quotes">
+
+	<insert id="insertQuotesDetails" parameterType="com.ninepstudio.ios8Widget.data.Quotes">
+		insert into InspiringQuotes
+		(quote,quoteAuthor)
+		values
+		(#{quote},#{quoteAuthor})
+	</insert>
+
+	<select id="getQuote" parameterType="java.lang.Integer"  resultType="com.ninepstudio.ios8Widget.data.Quotes">
+	    	
+	SELECT quote as quote, timedate as timedate, quoteAuthor as quoteAuthor,quoteId as quoteId
+	FROM InspiringQuotes where quoteStatus = 0  ORDER BY RAND()  LIMIT 1
+	
+	</select>
+
+	<update id="updateQuote" parameterType="java.lang.Integer">
+	    update InspiringQuotes SET quoteStatus = 1 where quoteId = #{quoteId}
+	</update>
+
+</mapper>
+

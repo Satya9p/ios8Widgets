@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Horoscope">
+<resultMap type="com.ninepstudio.ios8Widget.data.Horoscope" id="signlist">
+    <result column="sign" property="sign" />
+	<result column="description" property="description" />
+	<result column="timedate" property="timedate" />
+    </resultMap>
+    
+	<insert id="insertHoroscopeDetails" parameterType="com.ninepstudio.ios8Widget.data.Horoscope">
+		insert into horoscope
+		(sign,description,id)
+		values
+		(#{sign},#{description},#{id})
+	</insert>
+
+	<select id="getSignDescription" parameterType="java.lang.String"  resultType="com.ninepstudio.ios8Widget.data.Horoscope">
+	    
+		select  description as description,
+			    timedate as timedate
+			    from horoscope
+		where sign=#{sign} 
+	</select>
+	
+	<delete id="deletehoroscopeData" >
+	    delete from horoscope 
+	</delete> 
+	
+	
+	<select id="getAllSignDescriptions" resultMap="signlist">
+	    select sign as sign,
+	    		description as description,
+	    		timedate as timedate
+	    		from horoscope ORDER BY id ASC
+	</select>
+</mapper>
+

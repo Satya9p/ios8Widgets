@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app>
+ 
+    <listener>
+    <listener-class>com.ninepstudio.ios8Widget.services.WidgetsListener</listener-class>
+  </listener>
+  
+</web-app>

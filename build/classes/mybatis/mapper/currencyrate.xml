@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CurrencyRates">
+
+	<insert id="insertCurrencyDetails" parameterType="com.ninepstudio.ios8Widget.data.CurrencyRates">
+		insert into CurrencyRates
+		(id,targetCurrency,baseCurrency,time,date,rate)
+		values
+		(#{id},#{targetCurrency},#{baseCurrency},#{time},#{date},#{rate})
+	</insert>
+
+	<select id="getCurrencyRate" parameterType="java.lang.String"  resultType="com.ninepstudio.ios8Widget.data.CurrencyRates">
+	    
+		select  targetCurrency as targetCurrency,
+			    baseCurrency as baseCurrency,
+			    time as time,
+			    rate as rate,
+			    date as date,
+			    datetime as datetime
+			    from CurrencyRates
+		where id=#{id} 
+	</select>
+	
+	<delete id="deletePreviousData" >
+	    delete from CurrencyRates 
+	</delete> 
+
+</mapper>
+
